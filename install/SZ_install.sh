@@ -9,4 +9,3 @@ cd build
 cmake .. -DCMAKE_INSTALL_PREFIX:PATH=$SZ_FILES_PATH
 make
 make install
-cd "/users/gfwilki/compressors"
