@@ -1,4 +1,4 @@
-SZ_FILES_PATH="/users/gfwilki/compressors/SZ_Files"
+SZ_FILES_PATH="/users/gfwilki/Compression_Energy_Experiment/compressors/SZ_Files"
 SZ_PATH="/users/gfwilki/compressors/SZ_Files"
 mkdir $SZ_FILES_PATH
 cd $SZ_FILES_PATH
