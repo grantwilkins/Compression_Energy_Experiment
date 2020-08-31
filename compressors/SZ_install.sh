@@ -1,5 +1,5 @@
 SZ_FILES_PATH="/users/gfwilki/Compression_Energy_Experiment/compressors/SZ_Files"
-SZ_PATH="/users/gfwilki/Compression_Energy_Experiment/compressors/SZ_Files/SZ"
+SZ_PATH="/users/gfwilki/compressors/SZ_Files"
 mkdir $SZ_FILES_PATH
 cd $SZ_FILES_PATH
 git clone https://github.com/disheng222/SZ.git

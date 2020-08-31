@@ -9,9 +9,9 @@ bash libpressio_install.sh
 cd 
 mkdir $COMPRESSOR_PATH
 cd $COMPRESSOR_PATH
-bash SZ_install.sh
+bash "${COMPRESSOR_PATH}/SZ_install.sh"
 #bash SZ_test.sh
 cd "/users/gfwilki/Compression_Energy_Experiment/compressors"
-bash ZFP_install.sh
-bash ZFP_test.sh
+bash "${COMPRESSOR_PATH}/ZFP_install.sh"
+bash "${COMPRESSOR_PATH}/ZFP_test.sh"
 cd
