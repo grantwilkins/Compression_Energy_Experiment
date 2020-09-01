@@ -15,3 +15,5 @@ cd "/users/gfwilki/Compression_Energy_Experiment/compressors"
 bash "${COMPRESSOR_PATH}/ZFP_install.sh"
 bash "${COMPRESSOR_PATH}/ZFP_test.sh"
 cd
+source /users/gfwilki/Compression_Energy_Experiment/install/spack/share/spack/setup-env.sh
+spack load libpressio
