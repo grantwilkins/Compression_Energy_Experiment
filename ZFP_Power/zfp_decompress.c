@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <libpressio.h>
 #include <zfp.h>
+#include <sz.h>
 
 #include "make_input_data.h"
 #define NUM_RUNS 100
@@ -11,7 +12,7 @@ int main(int argc, char *argv[])
   struct pressio_compressor* compressor = pressio_get_compressor(library, "zfp");
   struct pressio_options* sz_options = pressio_compressor_get_options(compressor);
 
-  pressio_options_set_double(sz_options, "zfp:accuracy", 0.5);
+  pressio_options_set_double(sz_options, "zfp:accuracy", 0.1);
   if(pressio_compressor_check_options(compressor, sz_options)) {
     printf("%s\n", pressio_compressor_error_msg(compressor));
     exit(pressio_compressor_error_code(compressor));
