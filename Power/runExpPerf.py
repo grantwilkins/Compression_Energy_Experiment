@@ -28,17 +28,9 @@ for abs_err in abs_err_vals:
 				print("cpupower frequency-set -f " + str(freq) + "GHz")
 				print("perf stat -o data.txt -e power/energy-pkg/ /users/gfwilki/Compression_Energy_Experiment/Power/"+ Operation + " " + Compressor + " " + abs_err + " " + dataSetPath + file)
 				print("grep -E \'Joules|time\' ./data.txt >> " + curRecFile)
-                                print("perf record /users/gfwilki/Compression_Energy_Experiment/Power/"+ Operation + " " + Compressor + " " + abs_err + " " + dataSetPath + file)
-                                curPerfFile = Compressor + "_" + file + "_" + abs_err + "_" + str(freq) + "_perfData.txt"
-                                print("perf report > " + curPerfFile)
-                                print("mv " + curPerfFile + " ~/")
-                                print("rm perf.data")
-				#print("mv /users/gfwilki/Compression_Injection-Power_Experiment/rapl_plot/power_results" + " ~/" + file.split('/')[-1] + "_" + str(freq))
-			#print("cd") 
+				print("perf record /users/gfwilki/Compression_Energy_Experiment/Power/"+ Operation + " " + Compressor + " " + abs_err + " " + dataSetPath + file)
+				curPerfFile = Compressor + "_" + file + "_" + abs_err + "_" + str(freq) + "_perfData.txt"
+				print("perf report > " + curPerfFile)
+				print("mv ./" + curPerfFile + " ~/")
+				print("rm perf.data")
 			print("mv ./" + curRecFile + " ~/")
-			#print("tar -cvzf " + file.split('/')[-1] + "-data.tar.gz" +" ./" + file.split('/')[-1] + "*")
-			#print("sudo rm -rf " + file.split('/')[-1] + "_*")
-			#print("cd Compression_Injection-Power_Experiment")
-	#print("tar -cvzf " + abs_err + "_data.tar.gz ./*.tar.gz")
-	#print("sudo rm -rf *-data.tar.gz")
-

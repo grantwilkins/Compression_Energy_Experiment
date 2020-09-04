@@ -12,7 +12,7 @@ all: compress decompress
 compress: compress.c
 	$(CC) compress.c -Wall -g -o compress $(SZ_FLAGS) $(ZFP_FLAGS)$(LIBPRESSIO_FLAGS)
 
-sz_decompress: decompress.c
+decompress: decompress.c
 	$(CC) decompress.c -Wall -g -o decompress $(SZ_FLAGS) $(ZFP_FLAGS) $(LIBPRESSIO_FLAGS)
 
 clean:
