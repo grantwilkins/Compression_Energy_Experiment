@@ -1,5 +1,6 @@
 SZ_FILES_PATH="/users/gfwilki/Compression_Energy_Experiment/compressors/SZ_Files"
 SZ_PATH="/users/gfwilki/Compression_Energy_Experiment/compressors/SZ_Files/SZ"
+mkdir $SZ_FILES_PATH
 cd $SZ_FILES_PATH
 pwd
 wait

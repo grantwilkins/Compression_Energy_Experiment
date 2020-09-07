@@ -1,7 +1,7 @@
 #include <libpressio.h>
 #include <sz.h>
+#include <zfp.h>
 
-#include "make_input_data.h"
 #define NUM_RUNS 100;
 
 int main(int argc, char *argv[])

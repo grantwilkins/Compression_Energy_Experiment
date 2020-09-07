@@ -4,8 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "make_input_data.h"
-#define NUM_RUNS 100
+#define NUM_RUNS 2
 
 int main(int argc, char *argv[])
 {
@@ -24,11 +23,14 @@ int main(int argc, char *argv[])
      strcpy(path_to_data, argv[3]);
   }
 
+  struct pressio* library;
+  struct pressio_compressor* compressor;
+  struct pressio_options* sz_options;
   if(strcmp(compressor_name, "sz") == 0)
   {
-    struct pressio* library = pressio_instance();
-    struct pressio_compressor* compressor = pressio_get_compressor(library, "sz");
-    struct pressio_options* sz_options = pressio_compressor_get_options(compressor);
+    library = pressio_instance();
+    compressor = pressio_get_compressor(library, "sz");
+    sz_options = pressio_compressor_get_options(compressor);
 
     pressio_options_set_integer(sz_options, "sz:error_bound_mode", ABS);
     pressio_options_set_double(sz_options, "sz:abs_err_bound", error_bound);
@@ -43,9 +45,9 @@ int main(int argc, char *argv[])
   }
   else if(strcmp(compressor_name, "zfp") == 0)
   {
-    struct pressio* library = pressio_instance();
-    struct pressio_compressor* compressor = pressio_get_compressor(library, "zfp");
-    struct pressio_options* sz_options = pressio_compressor_get_options(compressor);
+    library = pressio_instance();
+    scompressor = pressio_get_compressor(library, "zfp");
+    sz_options = pressio_compressor_get_options(compressor);
 
     pressio_options_set_double(sz_options, "zfp:accuracy", error_bound);
     if(pressio_compressor_check_options(compressor, sz_options)) {
@@ -70,6 +72,8 @@ int main(int argc, char *argv[])
     printf("Data path %s is invalid.\n", path_to_data);
     exit(-3);
   }
+  size_t dims[] = {26, 1800, 3600};
+  struct pressio_data * description = pressio_data_new_empty(pressio_float_dtype, 3, dims);
   struct pressio_data* input_data = pressio_io_data_path_read(NULL, path_to_data);
 
 
@@ -82,10 +86,12 @@ int main(int argc, char *argv[])
   int counter;
   for(counter = 0; counter < NUM_RUNS; counter++)
   {
+      compressed_data = pressio_data_new_empty(pressio_byte_dtype, 0, NULL);
       if(pressio_compressor_compress(compressor, input_data, compressed_data)) {
         printf("%s\n", pressio_compressor_error_msg(compressor));
         exit(pressio_compressor_error_code(compressor));
       }
+      pressio_data_free(compressed_data);
   }
 
   pressio_data_free(compressed_data);
