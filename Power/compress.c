@@ -1,4 +1,5 @@
 #include <libpressio.h>
+#include <libpressio_ext/io/posix.h>
 #include <sz.h>
 #include <zfp.h>
 #include <string.h>
@@ -46,7 +47,7 @@ int main(int argc, char *argv[])
   else if(strcmp(compressor_name, "zfp") == 0)
   {
     library = pressio_instance();
-    scompressor = pressio_get_compressor(library, "zfp");
+    compressor = pressio_get_compressor(library, "zfp");
     sz_options = pressio_compressor_get_options(compressor);
 
     pressio_options_set_double(sz_options, "zfp:accuracy", error_bound);
@@ -67,14 +68,14 @@ int main(int argc, char *argv[])
 
 
 
-  if(fopen(path_to_data) == NULL)
+  if(fopen(path_to_data, "r") == NULL)
   {
     printf("Data path %s is invalid.\n", path_to_data);
     exit(-3);
   }
   size_t dims[] = {26, 1800, 3600};
   struct pressio_data * description = pressio_data_new_empty(pressio_float_dtype, 3, dims);
-  struct pressio_data* input_data = pressio_io_data_path_read(NULL, path_to_data);
+  struct pressio_data* input_data = pressio_io_data_path_read(description, path_to_data);
 
 
   //creates an output dataset pointer
@@ -94,7 +95,7 @@ int main(int argc, char *argv[])
       pressio_data_free(compressed_data);
   }
 
-  pressio_data_free(compressed_data);
+  //pressio_data_free(compressed_data);
   pressio_data_free(input_data);
 
   //free options and the library
