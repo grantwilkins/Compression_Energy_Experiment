@@ -1,4 +1,4 @@
-ZFP_PATH=/home/grant/Compression_Energy_Experiment/compressors/zfp
+ZFP_PATH=/users/gfwilki/Compression_Energy_Experiment/compressors/zfp
 CC=gcc
 
 ZFP_FLAGS= -I$(ZFP_PATH)/include/ -L$(ZFP_PATH)/lib/ -lzfp -lm
