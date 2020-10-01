@@ -1,18 +1,12 @@
-ZFP_PATH=/users/gfwilki/Compression_Energy_Experiment/compressors/zfp
-LIBPRESSIO_PATH=/users/gfwilki/libpressio
+ZFP_PATH=/home/grant/Compression_Energy_Experiment/compressors/zfp
 CC=gcc
 
-ZFP_FLAGS= -I$(ZFP_PATH)/include/ -lm
-LIBPRESSIO_FLAGS= -I$(LIBPRESSIO_PATH)/include/ -llibpressio
+ZFP_FLAGS= -I$(ZFP_PATH)/include/ -L$(ZFP_PATH)/lib/ -lzfp -lm
 
-all: zfp_compress zfp_decompress
+all: simple
 
-zfp_compress: zfp_compress.c
-	$(CC) zfp_compress.c -Wall -g -o zfp_compress $(ZFP_FLAGS) $(LIBPRESSIO_FLAGS)
-
-zfp_decompress: zfp_decompress.c
-	$(CC) zfp_decompress.c -Wall -g -o zfp_compress $(ZFP_FLAGS) $(LIBPRESSIO_FLAGS)
+simple: simple.c
+	$(CC) simple.c -Wall -g -o simple $(ZFP_FLAGS)
 
 clean:
-	rm zfp_compress
-	rm zfp_decompress
+	rm simple

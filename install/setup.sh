@@ -5,16 +5,16 @@ apt-get install g++ cmake perl python3 libssl-dev git curl xz-utils tar gzip pkg
 modprobe msr
 snap install cmake --classic
 pip install numpy
-bash libpressio_install.sh
+#bash libpressio_install.sh
 
 cd 
 mkdir $COMPRESSOR_PATH
 cd $COMPRESSOR_PATH
-bash "${COMPRESSOR_PATH}/SZ_install.sh"
+#bash "${COMPRESSOR_PATH}/SZ_install.sh"
 #bash SZ_test.sh
 cd "/users/gfwilki/Compression_Energy_Experiment/compressors"
 bash "${COMPRESSOR_PATH}/ZFP_install.sh"
-bash "${COMPRESSOR_PATH}/ZFP_test.sh"
-cd
-source /users/gfwilki/Compression_Energy_Experiment/install/spack/share/spack/setup-env.sh
-spack load libpressio
+#bash "${COMPRESSOR_PATH}/ZFP_test.sh"
+cd 
+#source /users/gfwilki/Compression_Energy_Experiment/install/spack/share/spack/setup-env.sh
+#spack load libpressio
